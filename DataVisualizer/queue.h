@@ -7,15 +7,10 @@
 #include <QGraphicsRectItem>
 #include <QPointF>
 #include <QLineF>
+#include "visualizer.h"
 
 namespace Ui {
 class Queue;
-
-typedef struct {
-    QGraphicsRectItem *rect;
-    QGraphicsTextItem *text;
-} Element;
-
 }
 
 class Queue : public QWidget
@@ -25,6 +20,9 @@ class Queue : public QWidget
 public:
     explicit Queue(QWidget *parent = 0);
     ~Queue();
+    void insertElem(QString val);
+    void removeElem(int idx);
+    void cleanupElem(Ui::RectElement *elem);
 
 private slots:
     void on_pushButton_2_clicked();
@@ -32,6 +30,8 @@ private slots:
     void on_pushButton_clicked();
 
     void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
 
 private:
     Ui::Queue *ui;
@@ -43,7 +43,7 @@ private:
     QGraphicsTextItem *rear_label;
     QGraphicsLineItem *front_line;
     QGraphicsLineItem *rear_line;
-    std::map<int, Ui::Element> lmap;
+    std::map<int, Ui::RectElement> lmap;
 };
 
 #endif // QUEUE_H

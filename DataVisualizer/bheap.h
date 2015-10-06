@@ -8,18 +8,12 @@
 #include <QGraphicsItem>
 #include <QLineEdit>
 #include <QPointF>
+#include "visualizer.h"
 
 #define MAX_ENTRIES 500
 
 namespace Ui {
 class Bheap;
-
-typedef struct {
-    QGraphicsEllipseItem *ellipse;
-    QGraphicsTextItem *text;
-    QGraphicsLineItem *plink;
-    QPointF *pos;
-} Node;
 };
 
 class Bheap : public QWidget
@@ -29,10 +23,12 @@ class Bheap : public QWidget
 public:
     explicit Bheap(QWidget *parent = 0);
     ~Bheap();
-    void insertbheap();
-    void removeMin();
     void adjustsceneRect(QRectF offset);
-    void deleteNode(Ui::Node *node);
+    void insertElem(QString val);
+    void removeElem(int idx);
+    void cleanupElem(Ui::EllipseElement *node);
+    void heapUp();
+    void heapDown();
 
 private slots:
     void on_pushButton_2_clicked();
@@ -41,11 +37,13 @@ private slots:
 
     void on_pushButton_3_clicked();
 
+    void on_pushButton_4_clicked();
+
 private:
     Ui::Bheap *ui;
     QGraphicsScene *scene;
     int num_of_entries;
-    Ui::Node *hmap[MAX_ENTRIES];
+    Ui::EllipseElement *hmap[MAX_ENTRIES];
     QString heap[MAX_ENTRIES];
     int heap_height;
     QRectF scene_coords, base_coords;

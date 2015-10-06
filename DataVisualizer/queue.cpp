@@ -28,31 +28,23 @@ Queue::~Queue()
     delete ui;
 }
 
-// Inserting a new element to the
-// front of the queue.
-void Queue::on_pushButton_2_clicked()
+// Insert an element into the
+// Queue
+void Queue::insertElem(QString val)
 {
-    QString val;
     QFont font;
     QGraphicsTextItem *l;
     QGraphicsRectItem *r;
-    Ui::Element elem;
+    Ui::RectElement elem;
     QPen pen;
 
+    font.bold();
     pen.setBrush(Qt::red);
-    val = ui->lineEdit->text();
-    if (val == "") {
-        return; //No value -- No-op!
-    }
-    ui->lineEdit->setText("");
-
     font.setBold(1);
     font.setWeight(10);
     if (!num_of_entries) {
         // Add a new element for the first time
         // Insert front and rear label here.
-        QFont font;
-        font.bold();
         front_label = scene->addText("Front", font);
         front_label->setPos(fpoint);
         front_line = scene->addLine(fline);
@@ -80,41 +72,38 @@ void Queue::on_pushButton_2_clicked()
     lmap.insert(std::make_pair(num_of_entries, elem));
 }
 
-
-// Delete an element from the
-// queue and clean up.
-void Queue::on_pushButton_clicked()
+// Clean up the Queue Element
+void Queue::cleanupElem(Ui::RectElement *elem)
 {
-    QString val;
-    QRect rect;
-    QFont font;
-    std::map <int, Ui::Element>::iterator it, it2;
+    QGraphicsTextItem *l = elem->text;
+    QGraphicsRectItem *r = elem->rect;
+    ui->graphicsView->scene()->removeItem(l);
+    ui->graphicsView->scene()->removeItem(r);
+    delete l;
+    delete r;
+}
 
-    if (!num_of_entries) {
-        return;
-    }
+// Remove the element from Queue
+void Queue::removeElem(int index)
+{
+    std::map<int, Ui::RectElement>::iterator it, it2;
 
     // Delete the element
     // and clean up the resource
     // Also make sure to shift
     // the other elements to the left.
-    it = lmap.find(1);
+    it = lmap.find(index);
     if (it != lmap.end()) {
-        Ui::Element elem = it->second;
-        QGraphicsTextItem *l = elem.text;
-        QGraphicsRectItem *r = elem.rect;
-        ui->graphicsView->scene()->removeItem(l);
-        ui->graphicsView->scene()->removeItem(r);
+        Ui::RectElement elem = it->second;
+        cleanupElem(&elem);
         lmap.erase(it);
-        delete l;
-        delete r;
         QPointF pos;
         pos.setX(fline.x2()-10); pos.setY(fline.y2()+20);
         for (int i=2; i<(num_of_entries+1); i++) {
             it2 = lmap.find(i);
             if (it2 != lmap.end()) {
                lmap.insert(std::make_pair(i-1, it2->second));
-               Ui::Element elem = it2->second;
+               Ui::RectElement elem = it2->second;
                QGraphicsRectItem *r = elem.rect;
                QGraphicsTextItem *t = elem.text;
                t->setPos(pos.x(), pos.y());
@@ -143,10 +132,42 @@ void Queue::on_pushButton_clicked()
     }
 }
 
+// Inserting a new element to the
+// front of the queue.
+void Queue::on_pushButton_2_clicked()
+{
+    QString val;
+
+    val = ui->lineEdit->text();
+    if (val == "") {
+        return; //No value -- No-op!
+    }
+    ui->lineEdit->setText("");
+
+    insertElem(val);
+}
+
+// Delete an element from the
+// queue and clean up.
+void Queue::on_pushButton_clicked()
+{
+    QString val;
+    QRect rect;
+    QFont font;
+    std::map <int, Ui::RectElement>::iterator it, it2;
+
+    if (!num_of_entries) {
+        return;
+    }
+
+    // Remove the first element
+    removeElem(1);
+}
+
 // Clear queue
 void Queue::on_pushButton_3_clicked()
 {
-   std::map<int, Ui::Element>::iterator it;
+   std::map<int, Ui::RectElement>::iterator it;
 
    if  (!num_of_entries)
        return; // Do Nothing
@@ -154,13 +175,9 @@ void Queue::on_pushButton_3_clicked()
    for (int i=1; i<(num_of_entries+1); i++) {
         it = lmap.find(i);
         if (it != lmap.end()) {
-            Ui::Element elem = it->second;
-            QGraphicsTextItem *l = elem.text;
-            QGraphicsRectItem *r = elem.rect;
-            ui->graphicsView->scene()->removeItem(l);
-            ui->graphicsView->scene()->removeItem(r);
+            Ui::RectElement elem = it->second;
+            cleanupElem(&elem);
             lmap.erase(it);
-            delete l; delete r;
         }
     }
 
@@ -180,4 +197,15 @@ void Queue::on_pushButton_3_clicked()
     rpoint.setX(-500);
     rpoint.setY(-387);
     num_of_entries=0;
+}
+
+// Add 10 random numbers to Queue
+void Queue::on_pushButton_4_clicked()
+{
+    int randNum[10];
+
+    Ui::genRand(randNum, 10);
+    for (int i=0; i<10; i++) {
+        insertElem(QString::number(randNum[i]));
+    }
 }

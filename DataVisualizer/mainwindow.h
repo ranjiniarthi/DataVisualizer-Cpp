@@ -5,6 +5,7 @@
 #include "stack.h"
 #include "bheap.h"
 #include "queue.h"
+#include "visualizer.h"
 
 namespace Ui {
 class MainWindow;

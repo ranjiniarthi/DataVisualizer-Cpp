@@ -21,7 +21,8 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     bheap.h \
     queue.h \
-    stack.h
+    stack.h \
+    visualizer.h
 
 FORMS    += mainwindow.ui \
     bheap.ui \
