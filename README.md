@@ -10,16 +10,25 @@ The project has been developed in QT Creator IDE, using C++ based QGraphics fram
 
 ####The Repository Details
 
-This repository consists of a "DataVisualizer" folder that has all the source, UI and header files. This folder can be opened as a project in QT creator IDE.
+The "DataVisualizer" folder contains all the source, UI and header files. This folder can be opened as a project in "QT creator" IDE. 
 
-Every datastructure to be visualized has a UI file, a CPP source file and a header file with a class definition. Common interface APIs has been added for every datastructure such as insert/remove/clear/cleanup. These APIs have the implementation required for displaying a specific data structure type. 
+The project's design organizes into the following components.
 
-Further, as the queue/stack displays the data as list and min Heap/BST displays the data as tree, the display logic for these datastructure has been abstracted into list and tree classes. Any enhancement to this application such as adding AVL trees/Red Black trees will only require adding the datastructure specific details in their respective class definition and the display logic can be borrowed from these abstract classes. The definition of these abstract types can be found in visualizer.h and visualizer.cpp files. Top level GUI source/UI is handled in files titled "main".
+#####Datastructure Component
+
+Every datastructure type (DS) to be visualized has a UI file, CPP source file and a header file with a class definition. Common interface APIs have been added for every DST such as insert/remove/clear/cleanup. These APIs have the implementation required for displaying a specific DST. 
+
+#####Display Component
+
+Display types such as list (used in queue and stack DSes) and tree (used in min Heap and BST DSes) have been abstracted and defined in the visualizer header and cpp files.
+
+#####Main GUI
+
+Top level GUI source/UI is handled in files titled "main".
 
 ####How to work on an Issue
 
-    You can view the open issues for the repository under Issues. If there is a particular existing issue that you would like to fix, please leave a comment below it with intent and details of how you intend to fix it. This will reduce duplication of effort.
-    If you would like to propose an enhancement, or report a bug that you would like to work on, feel free to open new issues and we will assign them to you.
+You can view the open issues for the repository under Issues. If there is a particular existing issue that you would like to fix, please leave a comment below it with intent and details of how you intend to fix it. This will reduce duplication of effort.If you would like to propose an enhancement, or report a bug that you would like to work on, feel free to open new issues and we will assign them to you.
 
 ####How to get help
 
