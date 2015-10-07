@@ -35,13 +35,9 @@ private slots:
 
 private:
     Ui::stack *ui;
-    QGraphicsScene *scene;
-    int num_of_entries;
-    QPointF tpoint;
-    QLineF  tline;
-    QGraphicsTextItem *top_label;
-    QGraphicsLineItem *top_line;
-    std::map<int, Ui::RectElement> lmap;
+    Ui::List *sList;
+    QPointF tPoint;
+    QLineF tLine;
 };
 
 #endif // STACK_H

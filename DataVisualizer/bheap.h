@@ -40,12 +40,13 @@ private slots:
 private:
     Ui::Bheap *ui;
     QGraphicsScene *scene;
-    int num_of_entries;
-    Ui::EllipseElement *hmap[MAX_ENTRIES];
-    QString heap[MAX_ENTRIES];
-    int heap_height;
-    QRectF scene_coords, base_coords;
+   // int num_of_entries;
+   // Ui::EllipseElement *hmap[MAX_ENTRIES];
+   // QString heap[MAX_ENTRIES];
+   // int heap_height;
+   // QRectF scene_coords, base_coords;
     QValidator *v;
+    Ui::binaryTree *bTree;
 };
 
 #endif // BHEAP_H

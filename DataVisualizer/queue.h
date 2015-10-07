@@ -36,15 +36,11 @@ private slots:
 
 private:
     Ui::Queue *ui;
-    QGraphicsScene *scene;
-    int num_of_entries;
-    QPointF fpoint, rpoint;
-    QLineF  fline, rline;
-    QGraphicsTextItem *front_label;
-    QGraphicsTextItem *rear_label;
-    QGraphicsLineItem *front_line;
-    QGraphicsLineItem *rear_line;
-    std::map<int, Ui::RectElement> lmap;
+    QPointF fPoint, rPoint;
+    QLineF  fLineCoords, rLineCoords;
+    Ui::List *qList;
+    QGraphicsTextItem *fLabel;
+    QGraphicsLineItem *fLine;
     QValidator *v;
 };
 

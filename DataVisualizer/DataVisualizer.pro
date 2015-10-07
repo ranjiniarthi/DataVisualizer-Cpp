@@ -17,7 +17,8 @@ SOURCES += main.cpp\
     bheap.cpp \
     queue.cpp \
     stack.cpp \
-    bst.cpp
+    bst.cpp \
+    visualizer.cpp
 
 HEADERS  += mainwindow.h \
     bheap.h \
