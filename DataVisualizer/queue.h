@@ -2,6 +2,7 @@
 #define QUEUE_H
 
 #include <QWidget>
+#include <QtGui>
 #include <QGraphicsScene>
 #include <QGraphicsItem>
 #include <QGraphicsRectItem>
@@ -44,6 +45,7 @@ private:
     QGraphicsLineItem *front_line;
     QGraphicsLineItem *rear_line;
     std::map<int, Ui::RectElement> lmap;
+    QValidator *v;
 };
 
 #endif // QUEUE_H

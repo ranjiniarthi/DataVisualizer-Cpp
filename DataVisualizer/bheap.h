@@ -10,8 +10,6 @@
 #include <QPointF>
 #include "visualizer.h"
 
-#define MAX_ENTRIES 500
-
 namespace Ui {
 class Bheap;
 };

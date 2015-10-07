@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "stackform.h"
 #include <QApplication>
 #include "stdlib.h"
 #include "time.h"

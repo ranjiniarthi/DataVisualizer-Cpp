@@ -10,6 +10,8 @@ Bheap::Bheap(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    QRectF scene_coords;
+
     scene = new QGraphicsScene(this);
     ui->graphicsView->setScene(scene);
     scene->setSceneRect(-250, -250, 500, 500);
@@ -61,7 +63,6 @@ void Bheap::heapDown()
     pos = 1;
     while ((pos<num_of_entries) &&
            (heap[pos-1] != "0")) {
-        printf("Pos: %d\n", pos);
         // Get the array position for the minimum
         if (((2*pos-1)<num_of_entries) &&
             (heap[2*pos].toInt() > heap[2*pos-1].toInt())) {

@@ -20,6 +20,8 @@ Queue::Queue(QWidget *parent) :
     rline.setLine(-480, -387, -480, -410);
     rpoint.setX(-500);
     rpoint.setY(-387);
+    v = new QIntValidator(0, 65535, this);
+    ui->lineEdit->setValidator(v);
 }
 
 

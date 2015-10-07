@@ -16,15 +16,18 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     bheap.cpp \
     queue.cpp \
-    stack.cpp
+    stack.cpp \
+    bst.cpp
 
 HEADERS  += mainwindow.h \
     bheap.h \
     queue.h \
     stack.h \
-    visualizer.h
+    visualizer.h \
+    bst.h
 
 FORMS    += mainwindow.ui \
     bheap.ui \
     queue.ui \
-    stack.ui
+    stack.ui \
+    bst.ui

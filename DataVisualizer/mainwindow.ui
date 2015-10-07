@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>475</width>
-    <height>335</height>
+    <width>450</width>
+    <height>357</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -51,6 +51,19 @@
     </property>
     <property name="text">
      <string>Binary Heap (Min Heap)</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>150</y>
+      <width>171</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Binary Search Tree</string>
     </property>
    </widget>
   </widget>
